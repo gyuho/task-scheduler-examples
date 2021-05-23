@@ -12,3 +12,5 @@ Feature requirements are:
 
 This is basically how [etcd](https://github.com/etcd-io/etcd) server works.
 
+See https://github.com/rust-lang/wg-async-foundations/pull/209 for more discussions.
+
