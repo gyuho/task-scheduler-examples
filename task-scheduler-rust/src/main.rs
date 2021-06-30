@@ -7,7 +7,7 @@ use clap::{crate_version, Clap};
 mod server;
 
 #[derive(Clap)]
-#[clap(version = "0.1.0")]
+#[clap(version = "0.2.0")]
 struct Opts {
     #[clap(long, default_value = "3000")]
     port: u16,
