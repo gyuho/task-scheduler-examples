@@ -110,7 +110,7 @@ pub async fn apply_async(
     mut stop_rx: mpsc::Receiver<()>,
     mut echo_manager: echo::Manager,
 ) -> io::Result<()> {
-    println!("running apply routine");
+    println!("running apply loop");
     'outer: loop {
         // select either
         // receive either from "request_rx" or "stop_rx"
