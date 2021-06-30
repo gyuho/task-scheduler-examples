@@ -6,10 +6,12 @@ use std::{
     time::{Duration, Instant},
 };
 
-use tokio::select;
-use tokio::sync::mpsc;
-use tokio::task::{self, JoinHandle};
-use tokio::time::timeout;
+use tokio::{
+    select,
+    sync::mpsc,
+    task::{self, JoinHandle},
+    time::timeout,
+};
 
 use crate::echo;
 use crate::id;
