@@ -100,7 +100,6 @@ impl Applier {
             .map_err(|_| Error::new(ErrorKind::Other, "timeout"))?;
 
         let rs = msg.map_err(|e| Error::new(ErrorKind::Other, format!("failed to apply {}", e)))?;
-
         Ok(rs)
     }
 }

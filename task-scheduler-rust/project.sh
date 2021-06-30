@@ -7,12 +7,10 @@ cargo install cargo-edit
 
 # "id.rs"
 cargo add rand
-cargo add crossbeam
 
 # "notify.rs"
 cargo add uuid --features v4
-cargo add async-std
-cargo add crossbeam-channel
+cargo add tokio --features full
 
 # "echo.rs"
 cargo add serde --features derive
@@ -25,7 +23,6 @@ cargo add serde_json
 cargo add http
 cargo add futures
 cargo add hyper --features full
-cargo add tokio --features full
 
 # "main.rs"
 cargo add clap@3.0.0-beta.2
