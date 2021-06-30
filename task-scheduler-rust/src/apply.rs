@@ -44,9 +44,9 @@ impl Applier {
         let (stop_ch_tx, stop_ch_rx) = mpsc::channel(1);
 
         let notifier = Arc::new(notify::Notifier::new());
-        let echo_manager = echo::Manager::new();
-
         let notifier_clone = notifier.clone();
+
+        let echo_manager = echo::Manager::new();
 
         let handle = task::spawn(async move {
             apply_async(notifier_clone, request_ch_rx, stop_ch_rx, echo_manager).await
@@ -77,6 +77,7 @@ impl Applier {
             }
         }
 
+        println!("stopped applier");
         Ok(())
     }
 
@@ -111,7 +112,7 @@ pub async fn apply_async(
     println!("running apply routine");
     'outer: loop {
         // select either
-        // receive either from "stop_rx" or "request_rx"
+        // receive either from "request_rx" or "stop_rx"
         let (req_id, req) = select! {
             Some(v) = request_rx.recv() => v,
             _ = stop_rx.recv() => {

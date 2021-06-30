@@ -1,9 +1,10 @@
+use std::{convert::Infallible, net::SocketAddr, sync::Arc, time::Duration};
+
 use futures::{TryFutureExt, TryStreamExt};
 use http::{Method, Request, Response, StatusCode};
 use hyper::server::conn::AddrStream;
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Body, Server};
-use std::{convert::Infallible, net::SocketAddr, sync::Arc, time::Duration};
 use tokio::signal;
 
 use task_scheduler_rust::apply;

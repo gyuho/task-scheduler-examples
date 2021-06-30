@@ -1,21 +1,18 @@
 [package]
 name = "task-scheduler-rust"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Gyuho Lee <leegyuho@amazon.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-async-std = "1.9.0"
 clap = "3.0.0-beta.2"
-crossbeam = "0.8.0"
-crossbeam-channel = "0.5.1"
 futures = "0.3.15"
 http = "0.2.4"
-hyper = { version = "0.14.7", features = ["full"] }
-rand = "0.8.3"
+hyper = { version = "0.14.9", features = ["full"] }
+rand = "0.8.4"
 serde = { version = "1.0.126", features = ["derive"] }
 serde_json = "1.0.64"
-tokio = { version = "1.6.0", features = ["full"] }
+tokio = { version = "1.7.1", features = ["full"] }
 uuid = { version = "0.8.2", features = ["v4"] }

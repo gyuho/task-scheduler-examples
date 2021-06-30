@@ -1,11 +1,12 @@
-use std::time::Duration;
-
-use crossbeam::atomic::AtomicCell;
+use std::{
+    sync::atomic::{AtomicU64, Ordering},
+    time::Duration,
+};
 
 #[derive(Debug)]
 pub struct Generator {
     prefix: u64,
-    suffix: AtomicCell<u64>,
+    suffix: AtomicU64,
 }
 
 impl Generator {
@@ -17,12 +18,13 @@ impl Generator {
 
         Self {
             prefix: member_id << (8 * 6),
-            suffix: AtomicCell::new(x),
+            suffix: AtomicU64::new(x),
         }
     }
 
     pub fn next(&self) -> u64 {
-        let suffix = self.suffix.fetch_add(1);
+        // ref. https://doc.rust-lang.org/std/sync/atomic/enum.Ordering.html
+        let suffix = self.suffix.fetch_add(1, Ordering::Acquire);
         let id = self.prefix | (suffix & (u64::MAX >> 16));
         id
     }

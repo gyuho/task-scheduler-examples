@@ -14,3 +14,5 @@ This is basically how [etcd](https://github.com/etcd-io/etcd) server works.
 
 See https://github.com/rust-lang/wg-async-foundations/pull/209 for more discussions.
 
+See https://github.com/gyuho/task-scheduler-examples/pull/1 for clean-up changes.
+
