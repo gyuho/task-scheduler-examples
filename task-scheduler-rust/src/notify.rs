@@ -75,7 +75,7 @@ impl Notifier {
 }
 
 #[tokio::test]
-async fn test_wait() {
+async fn test_notify() {
     use std::time::Duration;
     use tokio::time::timeout;
     use uuid::Uuid;
