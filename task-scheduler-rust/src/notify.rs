@@ -22,14 +22,12 @@ impl Notifier {
 
     pub fn register(&self, id: u64) -> io::Result<oneshot::Receiver<String>> {
         println!("registering {}", id);
-
-        let (request_tx, request_rx) = oneshot::channel();
-
         let mut locked_map = self
             .requests
             .lock()
             .map_err(|_| Error::new(ErrorKind::InvalidInput, "failed to acquire lock"))?;
 
+        let (request_tx, request_rx) = oneshot::channel();
         match locked_map.entry(id) {
             Entry::Vacant(entry) => {
                 entry.insert(request_tx);
@@ -48,7 +46,6 @@ impl Notifier {
 
     pub fn trigger(&self, id: u64, x: String) -> io::Result<()> {
         println!("triggering {}", id);
-
         let mut locked_map = self
             .requests
             .lock()
