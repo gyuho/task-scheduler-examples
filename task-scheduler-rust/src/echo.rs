@@ -25,6 +25,7 @@ fn test_parse_request() {
     assert!(ret.is_ok());
     let t = ret.unwrap();
     assert_eq!(t.kind, "create");
+    assert_eq!(t.message, "hello");
 }
 
 #[derive(Debug)]
