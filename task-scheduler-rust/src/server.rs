@@ -31,7 +31,7 @@ impl Handler {
     pub async fn start(self) -> Result<(), Box<dyn std::error::Error>> {
         println!("starting server");
 
-        let (applier, applier_handle) = apply::Applier::new(self.request_timeout);
+        let (applier, applier_handler) = apply::Applier::new(self.request_timeout);
         println!("started applier");
         let applier = Arc::new(applier);
 
@@ -71,7 +71,7 @@ impl Handler {
             Err(e) => println!("failed to stop applier {}", e),
         }
 
-        applier_handle.await??;
+        applier_handler.await??;
 
         Ok(())
     }
